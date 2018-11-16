@@ -1,0 +1,5 @@
+## . ./.secrets
+
+export NOW_TOKEN_SA_BUILDER=<EXAMPLE>
+
+echo 'SPACE ARENA SHIP BUILDER ENV VARS SET'

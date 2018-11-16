@@ -1,0 +1,10 @@
+{
+    "name": "space-arena-ship-builder",
+    "version": "1.0.0",
+    "dependencies": {},
+    "devDependencies": {},
+    "scripts": {
+        "start": "serve",
+        "deploy": "now --public --token $NOW_TOKEN_SA_BUILDER && now alias --token $NOW_TOKEN_SA_BUILDER && NOW_TOKEN=${NOW_TOKEN_SA_BUILDER} now-pipeline-prune && now ls payroll-giving-calculator --token $NOW_TOKEN_SA_BUILDER"
+    }
+}

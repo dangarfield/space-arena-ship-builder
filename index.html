@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Space Arena Ship Builder</title>
+
+    <link href="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url('/assets/headerbg.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* background: black; */
+            color: white;
+        }
+        .modal {
+            color: black;
+        }
+        .title {
+            padding: 10px 0;
+        }
+        .cell {
+            width: 25px;
+            height: 25px;
+            float: left;
+            cursor: pointer;
+            border: 1px #4F88C5 solid;
+            border-radius: 2px;
+            margin: 0;
+            padding: 0;
+        }
+        .cell[data-type="0"] { /* Blank */
+            background: #182737;
+        }
+        .cell[data-type="1"] { /* Ship */
+            background: #CCCCCC;
+        }
+        .cell[data-type="2"] { /* Engine */
+            background: #4364E3;
+        }
+        .cell[data-type="3"] { /* Ship / Engine */
+            background-image: -webkit-linear-gradient(315deg,#CCCCCC 50%,#4364E3 50%);
+        }
+        .cell[data-type="4"] { /* Unlock */
+            background: #FFF132;
+        }
+        .cell[data-type="5"] { /* Unlock engine */
+            background: #4364E3;
+            /* background: radial-gradient(ellipse at center, #4364e3 0%,#4364e3 49%,#fff132 50%,#fff132 100%); */
+            -webkit-box-shadow: inset 0 0 4px 4px #FFF132;
+            box-shadow: inset 0 0 4px 4px #FFF132;
+        }
+        .main {
+            margin-bottom: 10px;
+        }
+        .count .type {
+            display: inline-block;
+            width: 150px;
+        }
+        #image-modal .modal-content ,
+        #image-modal .modal-dialog {
+            max-width: 800px;
+            width: 800px;
+        }
+        .actions button {
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="title text-center">
+                    <img src="/assets/logo.png" />
+                    <h3>Ship Builder Template</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="instructions">
+                    <h2>Instructions</h2>
+                    <p>Click on a cell to change its type</p>
+                    <p>The types cycle in the following order:</p>
+                    <ul>
+                        <li>Blank</li>
+                        <li>Ship</li>
+                        <li>Engine</li>
+                        <li>Ship / Engine</li>
+                        <li>Upgrade</li>
+                        <li>Upgrade engine</li>
+                    </ul>
+                    <p>Hold the <code>shift</code> key and click, to reset to blank</p>
+                    <hr />
+                    <h3>Info</h3>
+                    <p>Link to <a href="" target="_blank">Reddit thread</a> for improvement suggestions</p>
+                    <p>Link to <a href="" target="_blank">Github repo</a> if you want to send a pull request for
+                        improvements</p>
+                    <p>Link to <a href="http://spaceship-battles.herocraft.com/" target="_blank">Space Arena website</a></p>
+                    <p>Made by Dan Garfield 2018</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="main">
+                    Loading...
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="actions">
+                    <h2>Actions</h2>
+                    <!-- <button class="btn btn-primary save">Save</button>
+                    <button class="btn btn-primary open">Open</button> -->
+                    <button class="btn btn-primary create-image" data-toggle="modal" data-target="#image-modal">Create
+                        image</button>
+                    <form class="form-inline" action="/">
+                        <div class="form-group">
+                            <label class="sr-only" for="row">Row</label>
+                            <input type="text" class="form-control" id="row" name="row" placeholder="Enter rows">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="col">Password</label>
+                            <input type="text" class="form-control" id="col" name="col" placeholder="Enter columns">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Resize grid</button>
+                    </form>
+                </div>
+                <div class="count">
+                    Loading...
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Space Arena Ship Builder</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="image text-center"></div>
+                    <p>Right-click, save and upload to your image hoster of choice</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="tmpl-main" type="text/x-handlebars-template">
+        {{#each this}}
+            <div class="row">
+                <div class="col-sm-12">
+                    {{#each this}}
+                        <div class="cell" data-type="{{this}}"></div>
+                    {{/each}}
+                </div>
+            </div>
+        {{/each}}
+    </script>
+    <script id="tmpl-count" type="text/x-handlebars-template">
+        <h2>Count</h2>
+        <p><span class="type">Ship</span> <span class="badge badge-primary">{{ship}}</span></p>
+        <p><span class="type">Engine</span> <span class="badge badge-primary">{{engine}}</span></p>
+        <p><span class="type">Upgrades</span> <span class="badge badge-primary">{{upgrade}}</span></p>
+        <p><i>Note: Ship / Engine counts towards ship cell total. Engine upgrades counts towards upgrades total</i></p>
+    </script>
+
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="/assets/html2canvas.min.js"></script>
+    <script src="/assets/app.js"></script>
+</body>
+
+</html>
