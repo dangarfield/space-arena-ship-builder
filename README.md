@@ -6,9 +6,9 @@
 ### Contribute:
 - https://space-arena-ship-builder.now.sh/ (or index.html in this repo)
 - Any basic local web-server is good. I typically use node.js with `npm install -g serve`, with `npm start` to run locally
+- On [reddit thread](https://www.reddit.com/r/SpaceArena/comments/9xques/online_ship_builder_app/)
 
 ### TODO:
-- On reddit thread - Link tbc
 - Style the main div in centre correctly - Styling is not my forte
 - Drag and select rather than click
 - Save and import from string - Read row and col content data-type attributes as nested array. Create modal for saving and inputting
