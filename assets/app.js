@@ -61,8 +61,8 @@ const bindActionClicks = () => {
   })
 }
 const getGridSize = () => {
-  let row = 20
-  let col = 20
+  let row = 13
+  let col = 13
   try {
     let url = new URL(window.location.href)
     let parseRow = parseInt(url.searchParams.get('row'))
