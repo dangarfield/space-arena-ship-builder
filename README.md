@@ -11,5 +11,5 @@
 ### TODO:
 - Style the main div in centre correctly - Styling is not my forte
 - Drag and select rather than click
-- Save and import from string - Read row and col content data-type attributes as nested array. Create modal for saving and inputting
-- Resizing grid doesn't remove grid state
+- ~~Save and import from string - Read row and col content data-type attributes as nested array. Create modal for saving and inputting~~ Complete
+- ~~Resizing grid doesn't remove grid state~~ Complete
