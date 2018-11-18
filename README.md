@@ -10,6 +10,6 @@
 
 ### TODO:
 - Style the main div in centre correctly - Styling is not my forte
-- Drag and select rather than click
+- ~~Drag and select rather than click~~ Quick easy way of doing it, will complete another day
 - ~~Save and import from string - Read row and col content data-type attributes as nested array. Create modal for saving and inputting~~ Complete
 - ~~Resizing grid doesn't remove grid state~~ Complete

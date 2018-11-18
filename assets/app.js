@@ -28,6 +28,12 @@ const bindMainClicks = () => {
     updateCount()
     generateSaveUrl()
   })
+  new DragSelect({
+    selectables: document.querySelectorAll('.cell'),
+    callback: e => {
+      $(e).click()
+    }
+  })
 }
 const updateCount = () => {
   let ship = $('.cell[data-type="1"]').length + $('.cell[data-type="3"]').length
